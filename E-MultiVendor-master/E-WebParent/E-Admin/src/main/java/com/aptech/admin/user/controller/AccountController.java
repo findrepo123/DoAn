@@ -45,11 +45,9 @@ public class AccountController {
 			user.setPhotos(fileName);
 			User savedUser = service.updateAccount(user);
 			
-			String uploadDir = "user-photos/" + savedUser.getId();
-			
+			String uploadDir = "./user-photos/" + savedUser.getId();
 			FileUploadUtil.cleanDir(uploadDir);
 			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-			
 		} else {
 			if (user.getPhotos().isEmpty()) user.setPhotos(null);
 			service.updateAccount(user);
@@ -57,7 +55,6 @@ public class AccountController {
 		
 		loggedUser.setFirstName(user.getFirstName());
 		loggedUser.setLastName(user.getLastName());
-		
 		redirectAttributes.addFlashAttribute("message", "Your account details have been updated.");
 		
 		return "redirect:/account";

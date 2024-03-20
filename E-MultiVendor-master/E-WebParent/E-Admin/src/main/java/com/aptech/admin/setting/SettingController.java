@@ -67,7 +67,7 @@ public class SettingController {
 //			String uploadDir = "site-logo";
 
 			
-			String uploadDir = "../site-logo/";
+			String uploadDir = "./site-logo/";
 			FileUploadUtil.cleanDir(uploadDir);
 			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 //			AmazonS3Util.removeFolder(uploadDir);

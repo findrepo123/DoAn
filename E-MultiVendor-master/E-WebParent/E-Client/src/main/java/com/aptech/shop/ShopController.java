@@ -40,8 +40,6 @@ import com.aptech.section.SectionService;
 
 @Controller
 public class ShopController {
-
-	
 	@Autowired private ShopService shopService;
 	@Autowired private ControllerHelper controllerHelper;
 	@Autowired private CategoryService categoryService;
@@ -51,12 +49,9 @@ public class ShopController {
 	public String listFirstPage(Model model, HttpServletRequest request) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-			
 			return "login";
 		}
-		
-		return listShopsByPage(model, request, 1, "createdTime", "desc", null);	
-		
+		return listShopsByPage(model, request, 1, "createdTime", "desc", null);
 	}
 
 	@GetMapping("/shops/page/{pageNum}")
@@ -67,9 +62,7 @@ public class ShopController {
 		
 		List<Section> listSections = sectionService.listEnabledSections();
 		model.addAttribute("listSections", listSections);
-		
-		
-		
+
 		if (hasAllCategoriesSection(listSections)) {
 			List<Category> listCategories = categoryService.listNoChildrenCategories();
 			model.addAttribute("listCategories", listCategories);
@@ -109,11 +102,9 @@ public class ShopController {
 				return true;
 			}
 		}
-		
 		return false;
 	}
-	
-	
+
 	@PostMapping("/shops/save")
 	public String createShop(RedirectAttributes redirectAttributes, HttpServletRequest request, Shop shop,
 			@RequestParam("fileImage") MultipartFile mainImageMultipart
@@ -193,6 +184,12 @@ public class ShopController {
 			ra.addFlashAttribute("message", ex.getMessage());
 		}
 		return "redirect:/shops";
-	}	
+	}
+
+	@GetMapping("/shops/manage-orders")
+	public String manageOrders() {
+
+		return "";
+	}
 	
 }

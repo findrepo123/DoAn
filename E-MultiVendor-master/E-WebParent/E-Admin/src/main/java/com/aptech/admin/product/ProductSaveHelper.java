@@ -95,7 +95,7 @@ public class ProductSaveHelper {
 			MultipartFile[] extraImageMultiparts, Product savedProduct) throws IOException {
 		if (!mainImageMultipart.isEmpty()) {
 			String fileName = StringUtils.cleanPath(mainImageMultipart.getOriginalFilename());
-			String uploadDir = "../product-images/" + savedProduct.getId();
+			String uploadDir = "./product-images/" + savedProduct.getId();
 			
 			FileUploadUtil.cleanDir(uploadDir);
 			FileUploadUtil.saveFile(uploadDir, fileName, mainImageMultipart);	
@@ -111,14 +111,13 @@ public class ProductSaveHelper {
 		}
 		
 		if (extraImageMultiparts.length > 0) {
-			String uploadDir = "../product-images/" + savedProduct.getId() + "/extras";
+			String uploadDir = "./product-images/" + savedProduct.getId() + "/extras";
 			
 			for (MultipartFile multipartFile : extraImageMultiparts) {
 				if (multipartFile.isEmpty()) continue;
 				
 				String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-//				AmazonS3Util.uploadFile(uploadDir, fileName, multipartFile.getInputStream());	
 			}
 		}
 		

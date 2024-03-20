@@ -52,7 +52,6 @@ public class OrderRestController {
 		if (email == null) {
 			throw new CustomerNotFoundException("No authenticated customer");
 		}
-				
 		return customerService.getCustomerByEmail(email);
 	}	
 }

@@ -30,7 +30,6 @@
 									<b sec:authentication="principal.fullName"></b>
 								</h3>
 							</div>
-
 						</div>
 						<div class="nav flex-column" id="v-pills-tab" role="tablist"
 							aria-orientation="vertical">
@@ -48,9 +47,22 @@
 								<span class="icon"><i class="fa-duotone fa-file-invoice"></i></span>
 								<span class="txt">Add New Shop</span>
 							</button>
-							<a th:href="@{/products}" class="nav-link"><span class="icon"><i
-									class="fa-duotone fa-wallet"></i></span> <span class="txt">Manage
-									Products</span></a>
+							<a th:href="@{/products}" class="nav-link">
+								<span class="icon">
+									<i class="fa-duotone fa-wallet"></i>
+								</span>
+								<span class="txt">
+									Manage Products
+								</span>
+							</a>
+							<a th:href="@{/shops/manage-orders}" class="nav-link">
+								<span class="icon">
+									<i class="fa-duotone fa-wallet"></i>
+								</span>
+								<span class="txt">
+									Manage Orders
+								</span>
+							</a>
 						</div>
 					</div>
 				</div>

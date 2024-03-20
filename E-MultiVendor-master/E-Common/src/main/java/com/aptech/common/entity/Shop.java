@@ -36,7 +36,7 @@ public class Shop extends IdBasedEntity {
 	@Column(name = "delivery_address", nullable = false, length = 64)
 	private String deliveryAddress;
 
-	private boolean enabled;
+	private Boolean enabled;
 
 	@ManyToOne
 	@JoinColumn(name = "customer_id")

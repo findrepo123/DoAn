@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import com.aptech.common.entity.order.Order;
+import com.aptech.order.OrderRepository;
+import com.aptech.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,8 +25,6 @@ public class ShopService {
 	
 	@Autowired private ShopRepository shopRepository;
 
-
-	
 	public Page<Shop> listForCustomerByPage(Customer customer, int pageNum, String sortField, String sortDir,
 			String keyword) {
 		Sort sort = Sort.by(sortField);
@@ -91,6 +92,10 @@ public class ShopService {
 
 	public List<Shop> listShopByCustomer(Customer customer) {
 		return shopRepository.listShopByCustomer(customer.getId());
-		
+	}
+
+	public List<Order> listOrderByShop(Shop shop) {
+
+		return null;
 	}
 }
