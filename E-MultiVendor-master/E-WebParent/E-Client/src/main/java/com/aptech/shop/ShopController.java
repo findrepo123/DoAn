@@ -122,7 +122,7 @@ public class ShopController {
 		String fileName = StringUtils.cleanPath(mainImageMultipart.getOriginalFilename());
 		shop.setImage(fileName);
 		Shop saveShop = shopService.createShop(shop, customer);
-		String uploadDir = "../shop-images/" + saveShop.getId(); 
+		String uploadDir = "./shop-images/" + saveShop.getId();
 		FileUploadUtil.cleanDir(uploadDir);
 		FileUploadUtil.saveFile(uploadDir, fileName, mainImageMultipart);						
 		redirectAttributes.addFlashAttribute("message", "The shop has been create successfully.");
@@ -165,11 +165,10 @@ public class ShopController {
 			shop.setImage(fileName);
 			Shop savedShop = shopService.updateShop(shop, customer);
 			
-			String uploadDir = "../shop-images/" + savedShop.getId();
+			String uploadDir = "./shop-images/" + savedShop.getId();
 			
 			FileUploadUtil.cleanDir(uploadDir);
 			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-			
 		} else {
 			if (shop.getImage().isEmpty()) shop.setImage(null);
 			shopService.updateShop(shop, customer);
